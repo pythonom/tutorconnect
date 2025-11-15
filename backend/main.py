@@ -7,9 +7,9 @@ from .reviews import routes as review_routes
 from .tutors import routes as tutor_routes
 
 origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
+    "*",
     "https://ddtutorconnect.netlify.app/",
+    "http://localhost:5173",
 ]
 
 app = FastAPI(title="Aarambhthon Backend")
