@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GraduationCap } from "lucide-react";
+import { API } from "../lib/api";
 
 export const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -10,7 +11,7 @@ export const Auth = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = API;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

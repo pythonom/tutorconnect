@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { X } from "lucide-react";
+import { API } from "../lib/api";
 
 type FormState = {
   bio: string;
@@ -22,7 +23,7 @@ export const TutorProfileForm = ({ onClose }: { onClose: () => void }) => {
   const loadProfile = async () => {
     if (!user) return;
 
-    const res = await fetch(`http://127.0.0.1:8000/api/tutors/${user.id}`);
+    const res = await fetch(`${API}/api/tutors/${user.id}`);
     if (res.ok) {
       const data = await res.json();
       setFormData({
@@ -37,7 +38,7 @@ export const TutorProfileForm = ({ onClose }: { onClose: () => void }) => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/tutors/profile", {
+      const res = await fetch(`${API}/api/tutors/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

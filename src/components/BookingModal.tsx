@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { X, Calendar, Clock } from "lucide-react";
+import { API } from "../lib/api";
 
 interface TutorInfo {
   id: number;
@@ -39,7 +40,7 @@ export const BookingModal = ({
 
     setLoading(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/sessions/book", {
+      const res = await fetch(`${API}/api/sessions/book`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

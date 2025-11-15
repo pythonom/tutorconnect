@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Search, Star, BookOpen } from "lucide-react";
+import { API } from "../lib/api";
 
 interface Tutor {
   id: number;
@@ -27,7 +28,7 @@ export const TutorSearch = ({
   const loadTutors = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/tutors");
+      const res = await fetch(`${API}/api/tutors`);
       if (!res.ok) throw new Error("Failed to fetch tutors");
       const data = await res.json();
 
@@ -44,7 +45,7 @@ export const TutorSearch = ({
 
       // Fetch reviews for each tutor
       for (const tutor of normalized) {
-        fetch(`http://127.0.0.1:8000/api/reviews/tutor/${tutor.id}`)
+        fetch(`${API}/api/reviews/tutor/${tutor.id}`)
           .then((res) => res.json())
           .then((data) => {
             const avg =

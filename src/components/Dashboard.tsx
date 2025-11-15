@@ -11,6 +11,7 @@ import {
   Video,
 } from "lucide-react";
 import { ReviewModal } from "./ReviewModal";
+import { API } from "../lib/api";
 
 // interface SessionWithProfiles extends Session {
 //   tutor: Profile;
@@ -71,8 +72,8 @@ export const Dashboard = () => {
       const token = localStorage.getItem("token");
 
       const endpoint = isTutor
-        ? "http://127.0.0.1:8000/api/sessions/tutor"
-        : "http://127.0.0.1:8000/api/sessions/me";
+        ? `${API}/api/sessions/tutor`
+        : `{API}/api/sessions/me`;
       const res = await fetch(endpoint, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -101,7 +102,7 @@ export const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://127.0.0.1:8000/api/sessions/${sessionId}?status=${status}`,
+        `${API}/api/sessions/${sessionId}?status=${status}`,
         {
           method: "PUT",
           headers: {

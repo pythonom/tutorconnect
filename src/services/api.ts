@@ -1,6 +1,8 @@
 // src/services/api.ts
 
-const BASE_URL = "http://127.0.0.1:8000"; // your FastAPI backend
+import { API } from "../lib/api";
+
+const BASE_URL = `${API}`; // your FastAPI backend
 
 // Fetch all tutors
 export async function fetchTutors() {

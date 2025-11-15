@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
+import { API } from "../lib/api";
 
 export const AvailabilityModal = ({ onClose }: { onClose: () => void }) => {
   const daysList = [
@@ -35,21 +36,18 @@ export const AvailabilityModal = ({ onClose }: { onClose: () => void }) => {
 
     try {
       for (const day of selectedDays) {
-        const res = await fetch(
-          "http://127.0.0.1:8000/api/tutors/availability",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-            body: JSON.stringify({
-              day_of_week: day,
-              start_time: startTime,
-              end_time: endTime,
-            }),
-          }
-        );
+        const res = await fetch(`${API}/api/tutors/availability`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({
+            day_of_week: day,
+            start_time: startTime,
+            end_time: endTime,
+          }),
+        });
 
         if (!res.ok) throw new Error("Failed to save availability");
       }

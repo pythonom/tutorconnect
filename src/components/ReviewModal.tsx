@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { X, Star } from "lucide-react";
 import { Session } from "../types/custom";
+import { API } from "../lib/api";
 
 export const ReviewModal = ({
   session,
@@ -26,7 +27,7 @@ export const ReviewModal = ({
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://127.0.0.1:8000/api/reviews", {
+      const res = await fetch(`${API}/api/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -6,6 +6,7 @@ import {
   ReactNode,
 } from "react";
 import { useNavigate } from "react-router-dom";
+import { API } from "../lib/api";
 
 interface User {
   id: number;
@@ -67,7 +68,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     fullName: string,
     role: "tutor" | "learner"
   ) => {
-    const res = await fetch("http://127.0.0.1:8000/api/auth/register", {
+    const res = await fetch(`${API}/api/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password, name: fullName, role }),
@@ -83,7 +84,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signIn = async (email: string, password: string) => {
-    const res = await fetch("http://127.0.0.1:8000/api/auth/login", {
+    const res = await fetch(`${API}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
