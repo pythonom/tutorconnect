@@ -6,3 +6,4 @@ python-jose[cryptography]
 pydantic
 python-dotenv
 httpx
+psycopg[binary]
