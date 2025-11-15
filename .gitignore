@@ -1,0 +1,70 @@
+
+# FRONTEND (React / Vite)
+
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDE files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+
+
+
+# BACKEND (FastAPI / Python)
+
+
+# Virtual environment
+venv/
+.env/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build artifacts
+*.so
+*.egg-info/
+.eggs/
+
+# Local config files
+*.sqlite3
+*.db
+*.pid
+*.mo
+
+# Pytest / Coverage
+.coverage
+htmlcov/
+.tox/
+pytest_cache/
+
+# Logs
+*.log
+backend/logs/
