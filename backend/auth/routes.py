@@ -76,6 +76,8 @@ async def register_user(data: RegisterModel):
             await conn.execute("DELETE FROM users WHERE id = $1", user["id"])
             await conn.close()
             raise HTTPException(status_code=500, detail=f"Failed to create tutor profile: {e}")
+    print("REGISTER PAYLOAD RECEIVED:", data.dict())
+
 
     await conn.close()
     return {"message": "User registered successfully"}
